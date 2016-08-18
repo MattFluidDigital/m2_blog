@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <virtualType name="BlogCategoriesGirdFilterPool" type="Magento\Framework\View\Element\UiComponent\DataProvider\FilterPool">
+        <arguments>
+            <argument name="appliers" xsi:type="array">
+                <item name="regular" xsi:type="object">Magento\Framework\View\Element\UiComponent\DataProvider\RegularFilter</item>
+                <item name="fulltext" xsi:type="object">Magento\Framework\View\Element\UiComponent\DataProvider\FulltextFilter</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="BlogCategoriesDataProvider" type="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider">
+        <arguments>
+            <!--<argument name="collection" xsi:type="object" shared="false">Fluid\Blog\Model\ResourceModel\Categories\Collection</argument>-->
+            <argument name="collection" xsi:type="object" shared="false">Fluid\Blog\Model\Resource\Categories\Collection</argument>
+            <argument name="filterPool" xsi:type="object" shared="false">BlogCategoriesGirdFilterPool</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="Fluid\Blog\Model\ResourceModel\Categories\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">fluid_blog_categories</argument>
+            <argument name="resourceModel" xsi:type="string">Fluid\Blog\Model\Resource\Categories</argument>
+        </arguments>
+    </virtualType>
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="fluid_blog_categories_listing_data_source" xsi:type="string">Fluid\Blog\Model\Resource\Categories\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+</config>

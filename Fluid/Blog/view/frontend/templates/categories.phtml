@@ -1,0 +1,15 @@
+<?php
+$categories = $block->getBlogCategories();
+?>
+<h2>Categories</h2>
+<?php
+if ($categories->getSize()> 0) {
+    echo '<div class="blog-category-list-box">';
+        echo '<ul class="blog-category-list">';
+        foreach ($categories as $category) {
+            echo '<li><a href="/blog/' . $category->getUrl() . '" title="' . $category->getName() . '">' . $category->getName() . '</a></li>';
+        }
+        echo '</ul>';
+    echo '</div>';
+
+}

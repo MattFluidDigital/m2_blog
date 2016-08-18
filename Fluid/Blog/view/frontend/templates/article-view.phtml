@@ -1,0 +1,31 @@
+<?php
+$articleUrl = $block->getBlogArticleUrl();
+if ($article = $block->getArticle($articleUrl)) {
+    $categoryUrl = $block->getBlogCategoryUrl();
+    $category    = $block->getBlogCategoryFromUrl($categoryUrl);
+?>
+    <div class="article-holder">
+        <h1 class="page-title">
+            <?php echo $article->getTitle();?>
+        </h1>
+        <h2 class="article-category">
+            <a href="/blog/<?php echo $category->getUrl();?>">
+                <?php echo $category->getName(); ?>
+            </a>
+        </h2>
+        <div class="article-content">
+            <?php echo $article->getContent(); ?>
+        </div>
+        <div class="article-details">
+            <span class="date">
+                <?php echo date('d/m/Y', strtotime($article->getCreatedAt()));?>
+            </span>
+            <span class="author">
+                <?php echo $block->getAuthor($article->getUserId()); ?>
+            </span>
+        </div>
+    </div>
+<?php
+} else {
+    return false;
+}

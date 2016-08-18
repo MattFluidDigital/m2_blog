@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="2columns-left" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="sidebar.main">
+            <block class="Fluid\Blog\Block\Categories" name="=fluid_blog_categories" template="categories.phtml" before="-">
+            </block>
+        </referenceContainer>
+        <referenceContainer name="content">
+            <block class="Fluid\Blog\Block\Articles" name="fluid_blog_article_view" template="article-view.phtml" />
+        </referenceContainer>
+        <referenceBlock name="page.main.title" remove="true" />
+    </body>
+</page>

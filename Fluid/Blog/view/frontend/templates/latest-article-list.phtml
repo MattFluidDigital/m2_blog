@@ -1,0 +1,20 @@
+<?php
+$articles = $block->getLatestPosts(3);
+?>
+<h2>Articles</h2>
+<?php
+if ($articles->getSize()> 0) { ?>
+    <div class="blog-article-list-box">
+        <?php foreach ($articles as $article) { ?>
+            <?php $category = $block->getArticleCategory($article->getCatId()); ?>
+            <div class="blog-article-row">
+                <a href="/blog/<?php echo $category->getUrl() . '/' . $article->getUrl(); ?>" title="<?php echo $article->getTitle(); ?>" class="article-name">
+                    <?php echo $article->getTitle(); ?>
+                </a>
+                <div class="content">
+                    <?php echo substr(strip_tags($article->getContent()), 0, 100); ?>
+                </div>
+            </div>
+        <?php } ?>
+    </div>
+<?php } ?>

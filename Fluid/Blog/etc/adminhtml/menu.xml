@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../Backend/etc/menu.xsd">
+    <menu>
+        <add id="Fluid_Blog::blog" title="Blog" module="Fluid_Blog" sortOrder="30" resource="Fluid_Blog::blog"/>
+
+        <add id="Fluid_Blog::categories" title="Categories" module="Fluid_Blog" sortOrder="10" parent="Fluid_Blog::blog" action="fluidblog/categories/index" resource="Fluid_Blog::categories"/>
+
+        <add id="Fluid_Blog::articles" title="Articles" module="Fluid_Blog" sortOrder="20" parent="Fluid_Blog::blog" action="fluidblog/article/index" resource="Fluid_Blog::articles"/>
+
+    </menu>
+</config>
